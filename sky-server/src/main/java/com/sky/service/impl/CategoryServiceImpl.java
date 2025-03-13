@@ -49,10 +49,6 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void addCateggory(CategoryDTO categoryDTO) {
         Category category = BeanUtil.copyProperties(categoryDTO, Category.class);
-        category.setCreateTime(LocalDateTime.now());
-        category.setUpdateTime(LocalDateTime.now());
-        category.setCreateUser(BaseContext.getCurrentId());
-        category.setUpdateUser(BaseContext.getCurrentId());
         category.setStatus(1);
         categoryMapper.inset(category);
     }
@@ -60,8 +56,6 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void modifyCategory(CategoryDTO categoryDTO) {
         Category category = BeanUtil.copyProperties(categoryDTO, Category.class);
-        category.setUpdateTime(LocalDateTime.now());
-        category.setUpdateUser(BaseContext.getCurrentId());
         categoryMapper.update(category);
     }
 
